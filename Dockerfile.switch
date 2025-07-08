@@ -1,0 +1,6 @@
+# Dockerfile for the virtual switch
+FROM python:3.8-slim
+WORKDIR /app
+COPY switch.py .
+RUN pip install numpy
+CMD ["python3", "switch.py"]

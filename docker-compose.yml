@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  switch:
+    build:
+      context: .
+      dockerfile: Dockerfile.switch  # Dockerfile for the virtual switch
+    container_name: switch
+    networks:
+      - my_network
+    ports:
+      - "4000:4000"  # Port for the virtual switch
+
+  worker_1:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker1  # Dockerfile for worker 1
+    container_name: worker_1
+    networks:
+      - my_network
+    ports:
+      - "5000:5000"  # Port for worker 1
+
+  worker_2:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker2  # Dockerfile for worker 2
+    container_name: worker_2
+    networks:
+      - my_network
+    ports:
+      - "5001:5001"  # Port for worker 2
+
+  central:
+    build:
+      context: .
+      dockerfile: Dockerfile.central  # Dockerfile for the central node
+    container_name: central_container
+    networks:
+      - my_network
+    depends_on:
+      - switch  # Ensure the switch starts before the central node
+      - worker_1
+      - worker_2
+
+networks:
+  my_network:
+    driver: bridge

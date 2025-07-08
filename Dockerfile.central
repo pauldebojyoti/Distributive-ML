@@ -1,0 +1,10 @@
+# Dockerfile for the central node
+FROM python:3.8-slim
+
+WORKDIR /app
+COPY central_new.py .
+COPY housing.csv .  
+
+RUN pip install numpy pandas scikit-learn
+
+CMD ["python3", "central_new.py"]

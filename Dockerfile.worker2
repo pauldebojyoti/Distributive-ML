@@ -1,0 +1,10 @@
+# Dockerfile for worker 2
+FROM python:3.8-slim
+
+WORKDIR /app
+
+COPY worker_new_2.py .
+
+RUN pip install numpy
+
+CMD ["python3", "worker_new_2.py"]
