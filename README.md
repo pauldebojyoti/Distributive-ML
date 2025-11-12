@@ -145,7 +145,3 @@ This project is provided under the MIT License. See `LICENSE` for details.
 ## Contact
 
 If you have questions or suggestions, open an issue or contact the maintainer: https://github.com/pauldebojyoti
-
----
-
-Generated and committed by GitHub Copilot (assistant) on behalf of Alkesh2410.
